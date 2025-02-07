@@ -1,0 +1,34 @@
+<button onclick="toggleState()">Toggle State</button>
+<p id="status">State: unknown</p>
+
+<script>
+async function toggleState() {
+    try {
+        console.log('Sending toggle request...');
+        const response = await fetch("http://localhost:3000/toggle-state", { method: "POST" });
+
+        if (response.ok) {
+            console.log('Toggle state request successful');
+        } else {
+            console.error('Toggle state request failed');
+        }
+        fetchState(); // Refresh state after toggling
+    } catch (error) {
+        console.error('Error in toggleState:', error);
+    }
+}
+
+async function fetchState() {
+    try {
+        console.log('Fetching state...');
+        const response = await fetch("http://localhost:3000/state");
+        const data = await response.json();
+        document.getElementById("status").innerText = "State: " + data.state;
+        console.log('State fetched:', data.state);
+    } catch (error) {
+        console.error('Error in fetchState:', error);
+    }
+}
+
+fetchState(); // Load initial state
+</script>
