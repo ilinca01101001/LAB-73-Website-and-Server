@@ -47,7 +47,10 @@ function connectWebSocket() {
 
     ws.onmessage = (event) => {
         console.log("WebSocket message received:", event.data);
-        document.getElementById("status").innerText = "State: " + event.data;
+        console.log(event.data);
+        //get the new state so that other messages arent put as the new state
+        fetchState();
+        //document.getElementById("status").innerText = "State: " + event.data;
     };
 
     ws.onclose = () => {
