@@ -1,7 +1,9 @@
 # LAB-73-Website-and-Server
 
 Requirements: HttpBlueprint Plugin
-Edit Build.cs
+
+Edit Build.cs under lab111\Source\lab111
+
 PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "WebSockets" });
 
 The .cpp and .h is in a cpp GameInstance
