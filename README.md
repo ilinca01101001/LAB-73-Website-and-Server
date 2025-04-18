@@ -1,6 +1,6 @@
 # LAB-73-Website-and-Server
 
-Requirements: HttpBlueprint Plugin
+Requirements: HttpBlueprint Plugin and WesocketBP plugin: https://www.fab.com/listings/d826ba07-7567-42ad-b19f-0c3e22e8ea0a
 
 Edit Build.cs under lab111\Source\lab111
 
