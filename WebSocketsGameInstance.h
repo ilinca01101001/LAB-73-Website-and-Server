@@ -8,10 +8,10 @@
 #include "WebSocketsGameInstance.generated.h"
 
 /**
- * Custom GameInstance to manage WebSocket communication
+ * 
  */
 UCLASS()
-class LAB10_API UWebSocketsGameInstance : public UGameInstance
+class LAB111_API UWebSocketsGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
@@ -23,6 +23,23 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
 	void SetTargetActor(AActor* NewTargetActor);
 
+	//Tracks whether the WebSocket is currently connected
+	UPROPERTY(BlueprintReadOnly, Category = "WebSocket")
+	bool bIsWebSocketConnected; 
+
+	/* UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	bool IsWebSocketConnected() const;
+ */
+
+	// Reconnect to WebSocket (optional)
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void ReconnectWebSocket();
+
+	// Send a message over WebSocket
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void SendWebSocketMessage(const FString& Message);
+
+
 private:
 	// WebSocket instance
 	TSharedPtr<IWebSocket> WebSocket;
@@ -30,4 +47,8 @@ private:
 	// Reference to the Blueprint actor that will receive WebSocket messages
 	UPROPERTY()
 	AActor* TargetActor;
+
+	// Internal connect method
+	void ConnectWebSocket();
+	
 };
